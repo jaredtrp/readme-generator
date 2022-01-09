@@ -13,11 +13,6 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'description',
-        message: `Please write a description of your project.`,
-    },
-    {
-        type: 'input',
         name: 'name',
         message: `What's your name?`,
     },
@@ -38,19 +33,29 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'Table of Contents',
+        name: 'contents',
         message: `Please list a Table of Contents.`,
+    },
+    {
+        type: 'input',
+        name: 'install',
+        message: `Please list instructions to install.`,
+    },
+    {
+        type: 'input',
+        name: 'usage',
+        message: `Provide instructions and examples for use.`,
+    },
+    {
+        type: 'input',
+        name: 'credits',
+        message: `Please add your credits.`,
     },
     {
         type: 'checkbox',
         name: 'license',
         message: 'Which license would you like to use? ',
         choices: ['MIT', 'APACHE 2.0', 'GPL 3.0', 'BSD 3', 'None'],
-    },
-    {
-        type: 'input',
-        name: 'credits',
-        message: `Please add your credits.`,
     },
 ];
 
