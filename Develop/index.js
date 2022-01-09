@@ -13,6 +13,16 @@ const questions = [
     },
     {
         type: 'input',
+        name: 'description',
+        message: `Please write a description of your project.`,
+    },
+    {
+        type: 'input',
+        name: 'name',
+        message: `What's your name?`,
+    },
+    {
+        type: 'input',
         name: 'github',
         message: `What's your GitHub User Name?`,
     },
@@ -24,36 +34,30 @@ const questions = [
     {
         type: 'input',
         name: 'description',
-        message: `Please write a description of your project`,
+        message: `Please write a description of your project.`,
     },
     {
         type: 'input',
-        name: 'installNotes',
-        message: `Please add your installation notes`,
-        when: function (answers) {
-            return answers.install;
-        }
+        name: 'Table of Contents',
+        message: `Please list a Table of Contents.`,
     },
     {
-        type: 'rawlist',
+        type: 'checkbox',
         name: 'license',
         message: 'Which license would you like to use? ',
         choices: ['MIT', 'APACHE 2.0', 'GPL 3.0', 'BSD 3', 'None'],
     },
     {
         type: 'input',
-        name: 'creditData',
-        message: `Please add your credits`,
-        when: function (answers) {
-            return answers.credits;
-        }
+        name: 'credits',
+        message: `Please add your credits.`,
     },
 ];
 
 // TODO: Create a function to write README file
 const writeToFile = (fileName, data) => {
     fs.writeFile(fileName, data, (err) =>
-        err ? console.error(err) : console.log(success)
+        err ? console.error(err) : console.log('success')
     );
 }
 
@@ -61,7 +65,7 @@ const writeToFile = (fileName, data) => {
 function init() {
     inquirer.prompt(questions)
         .then(function(data) {
-            writeToFile("README.md", generatorMarkdown(data));
+            writeToFile("README.md", generateMarkdown(data));
             console.log(data);
         })
 }
