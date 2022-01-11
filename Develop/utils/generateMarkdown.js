@@ -1,28 +1,52 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
-  `![foxdemo](https://github.com/foxdemo/foxdemo.github.io/blob/master/assets/images/avatar.png)`
+  //if state of when there is anything in the license, plug in the URL
+  if (license !== "None") {
+    return `[![License](https://img.shields.io/badge/License-${license}-blue.svg)]`;
+  } else {
+    return "";
+  }
 }
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseLink(license) {
+  if (license !== "None") {
+    return `* [License](#license)`;
+  } else {
+    return "";
+  }
+}
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {}
+function renderLicenseSection(license) {
+  if (license !== "None") {
+    return `## License
+    This project is under ${license}.`;
+  } else {
+    return "";
+  }
+}
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `# ${data.title}
-### Created by: ${data.name} | ### Github: ${data.github} | ### Email: ${data.email}
+### Created by: ${data.name} | ### Github: ${data.github} | ### Email: ${
+    data.email
+  }
+
 ## Description
 
 ${data.description}
 
 ## Table of Contents
 
-${data.contents}
+* [Installation](#installation)
+* [Usage](#installation)
+* [Credits](#installation)
+${renderLicenseLink(data.license)}
 
 ## Installation
 
@@ -36,9 +60,8 @@ ${data.usage}
 
 ${data.credits}
 
-${data.license}
-
-
+${renderLicenseSection(data.license)}
+${renderLicenseBadge(data.license)}
 
 `;
 }
